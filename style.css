@@ -1,0 +1,201 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background: linear-gradient(135deg, #74ebd5 0%, #ACB6E5 100%);
+  margin: 0;
+  padding: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 30px;
+  min-height: 100vh;
+  color: #2c3e50;
+}
+
+/* SEZIONI */
+section {
+  background: #fff;
+  border-radius: 18px;
+  padding: 25px 30px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+  transition: transform 0.35s cubic-bezier(.25,.8,.25,1), box-shadow 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover con animazione più "viva" */
+section:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 25px 40px rgba(0,0,0,0.15);
+}
+
+/* Titoli */
+h2 {
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  letter-spacing: 1.1px;
+  text-align: center;
+  color: #34495e;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+/* Labels & Inputs */
+label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #34495e;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+label:hover {
+  color: #16a085;
+}
+
+select, button {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid #bdc3c7;
+  background-color: #ecf0f1;
+  color: #2c3e50;
+  font-weight: 600;
+  transition: all 0.4s ease;
+  box-shadow: inset 0 4px 6px rgba(255,255,255,0.6);
+  outline: none;
+  cursor: pointer;
+  user-select: none;
+}
+
+select:hover, select:focus {
+  border-color: #16a085;
+  box-shadow: 0 0 10px #16a085aa;
+}
+
+button {
+  margin-top: 25px;
+  background: linear-gradient(45deg, #16a085, #1abc9c);
+  border: none;
+  color: white;
+  letter-spacing: 1.2px;
+  box-shadow: 0 8px 15px rgba(22,160,133,0.4);
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-family: 'Montserrat', sans-serif;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255,255,255,0.35);
+  transform: skewX(-20deg);
+  transition: left 0.7s ease;
+  z-index: 0;
+}
+
+button:hover::before {
+  left: 125%;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #1abc9c, #16a085);
+  box-shadow: 0 12px 25px rgba(22,160,133,0.7);
+}
+
+/* Liste */
+ul {
+  list-style: none;
+  padding-left: 0;
+  max-height: 360px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #16a085 #ecf0f1;
+}
+
+ul::-webkit-scrollbar {
+  width: 8px;
+}
+
+ul::-webkit-scrollbar-thumb {
+  background-color: #16a085;
+  border-radius: 20px;
+}
+
+.comanda {
+  background: linear-gradient(135deg, #81ecec, #74b9ff);
+  margin-bottom: 14px;
+  border-radius: 14px;
+  padding: 14px 18px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+  font-weight: 600;
+  color: #2d3436;
+  position: relative;
+  user-select: none;
+  cursor: default;
+  transition: background 0.3s ease;
+}
+
+.comanda:hover {
+  background: linear-gradient(135deg, #55efc4, #00b894);
+  color: #fff;
+}
+
+.comanda button {
+  margin-top: 10px;
+  background: #d63031;
+  border: none;
+  box-shadow: 0 8px 15px rgba(214, 48, 49, 0.7);
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 10px 0;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  user-select: none;
+}
+
+.comanda button:hover {
+  background: #e17055;
+  box-shadow: 0 12px 25px rgba(225, 112, 85, 0.9);
+}
+
+/* Scrollbar personalizzata se vuoi */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #ecf0f1;
+}
+::-webkit-scrollbar-thumb {
+  background: #16a085;
+  border-radius: 10px;
+}
+
+/* Animazioni più complesse usando Animate.css */
+/* Puoi applicare queste classi alle sezioni o singoli elementi nel JS o HTML */
+
+/* esempio uso nel JS: 
+element.classList.add('animate__animated', 'animate__jackInTheBox');
+*/
+
+/* Media Query per Mobile */
+@media (max-width: 720px) {
+  body {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+  section {
+    padding: 20px;
+  }
+}

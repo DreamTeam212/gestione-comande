@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gestione Comande Chiosco</title>
+
+  <!-- Google Font Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@4.1.1/animate.min.css" />
+
+  <!-- CSS Personalizzato -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Inserimento Comanda -->
+  <section id="inserimento" class="animate__animated animate__fadeInLeft">
+    <h2>Inserisci Comanda</h2>
+    <label for="numeroComanda">Numero Comanda</label>
+    <input type="number" id="numeroComanda" min="1" placeholder="Es: 1" />
+
+    <label for="tipoPiatto">Panino/Piatto/Niente</label>
+    <select id="tipoPiatto">
+      <option value="niente">Niente</option>
+      <option value="panino">Panino</option>
+      <option value="piatto">Piatto</option>
+    </select>
+
+    <label for="carne">Carne</label>
+    <select id="carne">
+      <option value="niente">Niente</option>
+      <option value="hamburger">Hamburger</option>
+      <option value="capocollo">Capocollo</option>
+      <option value="salsiccia">Salsiccia</option>
+      <option value="hotdog">Hotdog</option>
+    </select>
+
+    <label for="formaggio">Scamorza/Mozzarella/Pomodoro e insalata/Niente</label>
+    <select id="formaggio">
+      <option value="niente">Niente</option>
+      <option value="scamorza">Scamorza</option>
+      <option value="mozzarella">Mozzarella</option>
+      <option value="pomodoro">Pomodoro e insalata</option>
+    </select>
+
+    <label for="verdure">Melanzane/Zucchine/Peperoni/Melanzane sott’olio/Niente</label>
+    <select id="verdure">
+      <option value="niente">Niente</option>
+      <option value="melanzane">Melanzane</option>
+      <option value="zucchine">Zucchine</option>
+      <option value="peperoni">Peperoni</option>
+      <option value="melanzane_olio">Melanzane sott’olio</option>
+    </select>
+
+    <label for="salse">Ketchup/Maionese/BBQ/Tabasco/Niente</label>
+    <select id="salse">
+      <option value="niente">Niente</option>
+      <option value="ketchup">Ketchup</option>
+      <option value="maionese">Maionese</option>
+      <option value="bbq">BBQ</option>
+      <option value="tabasco">Tabasco</option>
+    </select>
+
+    <label for="fritti">Patatine/Supplì/Crocchette/Fritto misto</label>
+    <select id="fritti">
+      <option value="niente">Niente</option>
+      <option value="patatine">Patatine</option>
+      <option value="suppli">Supplì</option>
+      <option value="crocchette">Crocchette</option>
+      <option value="fritto_misto">Fritto misto</option>
+    </select>
+
+    <button id="btnInserisci">Aggiungi Comanda</button>
+  </section>
+
+  <!-- Carne da cucinare -->
+  <section id="carneDaCucinare" class="animate__animated animate__fadeInUp">
+    <h2>Carne da Cucinare</h2>
+    <ul id="listaCarne"></ul>
+  </section>
+
+  <!-- Condimenti e Salse -->
+  <section id="condimentiSalse" class="animate__animated animate__fadeInDown">
+    <h2>Condimenti e Salse</h2>
+    <ul id="listaCondimenti"></ul>
+  </section>
+
+  <!-- Fritti da preparare -->
+  <section id="frittiDaPreparare" class="animate__animated animate__fadeInRight">
+    <h2>Fritti da Preparare</h2>
+    <ul id="listaFritti"></ul>
+  </section>
+
+  <!-- Script -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
