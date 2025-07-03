@@ -1,5 +1,6 @@
 const express = require('express');
 const http = require('http');
+const path = require('path');
 const { Server } = require('socket.io');
 
 const app = express();
@@ -10,18 +11,24 @@ const io = new Server(server, {
   }
 });
 
+// Serve file statici dal frontend
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve index.html all'accesso root
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 let comande = [];
 
 io.on('connection', socket => {
   console.log('Nuovo client connesso');
 
-  // Invia comande iniziali
   socket.emit('comande_aggiornate', comande);
 
-  // Quando arriva una nuova comanda
   socket.on('aggiungi_comanda', comanda => {
     comande.push(comanda);
-    io.emit('comande_aggiornate', comande); // invia a tutti
+    io.emit('comande_aggiornate', comande);
   });
 
   socket.on('completa_comanda', numeroOrdine => {
@@ -30,6 +37,8 @@ io.on('connection', socket => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('Server in ascolto su porta 3000');
+// Porta dinamica per Render
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server avviato sulla porta ${PORT}`);
 });
