@@ -1,24 +1,18 @@
 const express = require('express');
 const http = require('http');
-const path = require('path');
 const { Server } = require('socket.io');
 
 const app = express();
-app.use(express.static('public'));
 const server = http.createServer(app);
+
 const io = new Server(server, {
   cors: {
     origin: "*"
   }
 });
 
-// Serve file statici dal frontend
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Serve index.html all'accesso root
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+// Qui serviamo i file statici (HTML, CSS, JS) da cartella "public"
+app.use(express.static('public'));
 
 let comande = [];
 
@@ -38,7 +32,6 @@ io.on('connection', socket => {
   });
 });
 
-// Porta dinamica per Render
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
   console.log(`Server avviato sulla porta ${PORT}`);
