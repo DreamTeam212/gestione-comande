@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <title>Fritti</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fritti</title>
+<link rel="stylesheet" href="style.css" />
+<script src="/socket.io/socket.io.js"></script>
+<script defer src="fritti.js"></script>
 </head>
 <body>
-  <h1>Fritti da preparare</h1>
-  <ul id="listaFritti"></ul>
-
-  <script>
-    async function aggiornaFritti() {
-      const res = await fetch("https://gestione-comande.onrender.com/comande");
-      const comande = await res.json();
-      const lista = document.getElementById("listaFritti");
-      lista.innerHTML = "";
-
-      comande.forEach(c => {
-        if (c.fritti.length > 0) {
-          const li = document.createElement("li");
-          li.textContent = `Ordine ${c.numero}: ${c.fritti.join(", ")}`;
-          li.addEventListener("click", async () => {
-            await fetch(`https://gestione-comande.onrender.com/completa/${c.numero}`, { method: "DELETE" });
-            aggiornaFritti();
-          });
-          lista.appendChild(li);
-        }
-      });
-    }
-
-    setInterval(aggiornaFritti, 3000);
-    aggiornaFritti();
-  </script>
+  <h1>Fritti</h1>
+  <ul id="lista-fritti"></ul>
 </body>
 </html>

@@ -1,23 +1,38 @@
 body {
   font-family: Arial, sans-serif;
   margin: 20px;
-}
-
-h1, h2 {
+  background: #f9f9f9;
   color: #333;
 }
 
-form {
+h1 {
   margin-bottom: 20px;
+  color: #2c3e50;
 }
 
-input {
-  padding: 5px;
-  margin-right: 10px;
+form label, fieldset {
+  display: block;
+  margin-bottom: 10px;
+}
+
+fieldset {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+  background: #fff;
 }
 
 button {
-  padding: 5px 10px;
+  background: #2980b9;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button:hover {
+  background: #3498db;
 }
 
 ul {
@@ -25,21 +40,16 @@ ul {
   padding-left: 0;
 }
 
-li {
-  margin-bottom: 10px;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
+ul li {
+  background: white;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-button.completa {
-  margin-left: 20px;
-  background-color: #e74c3c;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-}
-
-button.completa:hover {
-  background-color: #c0392b;
+ul li button {
+  flex-shrink: 0;
 }

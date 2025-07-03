@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <title>Carne da Cucinare</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Carne da Cucina</title>
+<link rel="stylesheet" href="style.css" />
+<script src="/socket.io/socket.io.js"></script>
+<script defer src="carne.js"></script>
 </head>
 <body>
-  <h1>Carne da cucinare</h1>
-  <ul id="listaCarne"></ul>
-
-  <script>
-    async function aggiornaCarne() {
-      const res = await fetch("https://gestione-comande.onrender.com/comande");
-      const comande = await res.json();
-      const carneEl = document.getElementById("listaCarne");
-      carneEl.innerHTML = "";
-
-      comande.forEach(c => {
-        const li = document.createElement("li");
-        li.textContent = `Ordine ${c.numero}: ${c.tipo} con ${c.carne} ` +
-          (c.mozzarella ? " + mozzarella" : "") +
-          (c.scamorza ? " + scamorza" : "");
-        li.addEventListener("click", async () => {
-          await fetch(`https://gestione-comande.onrender.com/completa/${c.numero}`, { method: "DELETE" });
-          aggiornaCarne();
-        });
-        carneEl.appendChild(li);
-      });
-    }
-
-    setInterval(aggiornaCarne, 3000);
-    aggiornaCarne();
-  </script>
+  <h1>Carne da Cucina</h1>
+  <ul id="lista-carne"></ul>
 </body>
 </html>

@@ -1,24 +1,55 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gestione Comande - Chiosco</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Inserimento Comanda</title>
+<link rel="stylesheet" href="style.css" />
+<script src="/socket.io/socket.io.js"></script>
+<script defer src="index.js"></script>
 </head>
 <body>
-  <h1>Gestione Comande</h1>
+  <h1>Inserimento Comanda</h1>
+  <form id="form-comanda">
+    <label>Numero Ordine: <input type="number" id="numero" required min="1" /></label>
 
-  <form id="formComanda">
-    <input type="number" id="numeroOrdine" placeholder="Numero Ordine" required />
-    <input type="text" id="descrizione" placeholder="Descrizione comanda" required />
+    <label>Tipo:
+      <select id="tipo" required>
+        <option value="panino">Panino</option>
+        <option value="piatto">Piatto</option>
+      </select>
+    </label>
+
+    <label>Carne:
+      <select id="carne" required>
+        <option value="pollo">Pollo</option>
+        <option value="manzo">Manzo</option>
+        <option value="maiale">Maiale</option>
+      </select>
+    </label>
+
+    <fieldset>
+      <legend>Formaggi</legend>
+      <label><input type="checkbox" id="mozzarella" /> Mozzarella</label>
+      <label><input type="checkbox" id="scamorza" /> Scamorza</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Condimenti</legend>
+      <label><input type="checkbox" class="condimento" value="maionese" /> Maionese</label>
+      <label><input type="checkbox" class="condimento" value="ketchup" /> Ketchup</label>
+      <label><input type="checkbox" class="condimento" value="senape" /> Senape</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>Fritti</legend>
+      <label><input type="checkbox" class="fritto" value="patatine" /> Patatine</label>
+      <label><input type="checkbox" class="fritto" value="anelli di cipolla" /> Anelli di cipolla</label>
+      <label><input type="checkbox" class="fritto" value="olive ascolane" /> Olive ascolane</label>
+    </fieldset>
+
     <button type="submit">Aggiungi Comanda</button>
   </form>
-
-  <h2>Comande Attive</h2>
-  <ul id="listaComande"></ul>
-
-  <script src="/socket.io/socket.io.js"></script>
-  <script src="script.js"></script>
+  <div id="feedback"></div>
 </body>
 </html>

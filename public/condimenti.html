@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <title>Condimenti</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Condimenti</title>
+<link rel="stylesheet" href="style.css" />
+<script src="/socket.io/socket.io.js"></script>
+<script defer src="condimenti.js"></script>
 </head>
 <body>
-  <h1>Condimenti da preparare</h1>
-  <ul id="listaCondimenti"></ul>
-
-  <script>
-    async function aggiornaCondimenti() {
-      const res = await fetch("https://gestione-comande.onrender.com/comande");
-      const comande = await res.json();
-      const lista = document.getElementById("listaCondimenti");
-      lista.innerHTML = "";
-
-      comande.forEach(c => {
-        if (c.condimenti.length > 0) {
-          const li = document.createElement("li");
-          li.textContent = `Ordine ${c.numero}: ${c.carne} con ${c.condimenti.join(", ")}`;
-          li.addEventListener("click", async () => {
-            await fetch(`https://gestione-comande.onrender.com/completa/${c.numero}`, { method: "DELETE" });
-            aggiornaCondimenti();
-          });
-          lista.appendChild(li);
-        }
-      });
-    }
-
-    setInterval(aggiornaCondimenti, 3000);
-    aggiornaCondimenti();
-  </script>
+  <h1>Condimenti</h1>
+  <ul id="lista-condimenti"></ul>
 </body>
 </html>
